@@ -10,7 +10,7 @@
 // DIFFERENT DATA! Contains movement dates, currency and locale
 
 const account1 = {
-  owner: 'Jonas Schmedtmann',
+  owner: 'Vinícius Henrique',
   movements: [200, 455.23, -306.5, 25000, -642.21, -133.9, 79.97, 1300],
   interestRate: 1.2, // %
   pin: 1111,
@@ -25,8 +25,8 @@ const account1 = {
     '2022-09-13T23:36:17.929Z',
     '2022-09-16T10:51:36.790Z',
   ],
-  currency: 'EUR',
-  locale: 'pt-PT', // de-DE
+  currency: 'BRL',
+  locale: 'pt-BR', // de-DE
 };
 
 const account2 = {
@@ -45,8 +45,8 @@ const account2 = {
     '2022-09-13T18:49:59.371Z',
     '2022-09-16T12:01:20.894Z',
   ],
-  currency: 'USD',
-  locale: 'en-US',
+  currency: 'BRL',
+  locale: 'pt-BR',
 };
 
 const accounts = [account1, account2];
@@ -205,7 +205,7 @@ btnLogin.addEventListener('click', function (e) {
 
   if (currentAccount?.pin === +inputLoginPin.value) {
     // Display UI and message
-    labelWelcome.textContent = `Welcome back, ${
+    labelWelcome.textContent = `Seja-bem vindo, ${
       currentAccount.owner.split(' ')[0]
     }`;
     containerApp.style.opacity = 100;
@@ -277,14 +277,16 @@ btnLoan.addEventListener('click', function (e) {
   const amount = Math.floor(inputLoanAmount.value);
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    // Add movement
-    currentAccount.movements.push(amount);
+    setTimeout(function () {
+      // Add movement
+      currentAccount.movements.push(amount);
 
-    // Add loan date
-    currentAccount.movementsDates.push(new Date().toISOString());
+      // Add loan date
+      currentAccount.movementsDates.push(new Date().toISOString());
 
-    // Update UI
-    updateUI(currentAccount);
+      // Update UI
+      updateUI(currentAccount);
+    }, 2500);
   }
   inputLoanAmount.value = '';
 });
@@ -546,5 +548,21 @@ console.log(
 
 */
 
-setTimeout(() => console.log('Here is your pizza 🍕'), 3000);
-console.log('Wating...');
+// setTimeout
+// const ingredients = ['olives', ''];
+// const pizzaTimer = setTimeout(
+//   (ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2} 🍕`),
+//   3000,
+//   ...ingredients
+// );
+// console.log('Wating...');
+
+// if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
+
+// // setInterval
+// setInterval(function () {
+//   const now = new Date();
+//   console.log(now.getHours());
+//   console.log(now.getMinutes());
+//   console.log(now.getSeconds());
+// }, 2000);
