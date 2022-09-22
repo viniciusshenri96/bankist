@@ -43,6 +43,23 @@ nav {
   display: flex;
 }
 
+.user-box {
+  display: grid;
+  position: relative;
+}
+
+.user-box p {
+  position: absolute;
+  bottom: -40px;
+  left: 8px;
+  color: #e52a5a;
+  font-size: 12px;
+}
+
+.hidden {
+  display: none;
+}
+
 .login__input {
   border: none;
   padding: 0.5rem 2rem;
@@ -94,7 +111,7 @@ nav {
   gap: 2rem;
 
   /* NOTE This creates the fade in/out anumation */
-  /* opacity: 0; */
+  opacity: 0;
   transition: all 1s;
 }
 
